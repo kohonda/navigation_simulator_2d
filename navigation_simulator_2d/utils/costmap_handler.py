@@ -1,6 +1,5 @@
 """2D Cost Map handler for navigation stack.
 Author: Kohei Honda
-Affiliation: OMRON SINIC X
 """
 from __future__ import annotations
 from typing import Tuple

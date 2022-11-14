@@ -25,3 +25,11 @@ pip3 install -e .
 ```
 
 
+## How to run example
+
+```
+cd test
+python3 test_simulator.py
+```
+
+[!animation](fig/animation.gif)

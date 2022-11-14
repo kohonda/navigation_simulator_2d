@@ -46,22 +46,7 @@ class ParameterHandler():
         # navigation envs params
         self._max_episode_steps = self._config['common']['max_episode_steps']
         self._max_global_planner_hz = self._config['common']['max_global_planner_hz']
-        self._min_path_length_ratio = self._config['common']['min_path_length_ratio']
-        
-        # handmade detection params
-        ## stuck detection
-        self.stuck_check_interval = self._config['handmade_detection']['stuck_check_interval']
-        self.stuck_radius = self._config['handmade_detection']['stuck_radius']
-        self.stuck_time_threshold = self._config['handmade_detection']['stuck_time_threshold']
-        self.deviation_threshold = self._config['handmade_detection']['deviation_threshold']
-        
-        ## oscillation
-        self.oscillation_check_interval = self._config['handmade_detection']['oscillation_check_interval']
-        self.oscillation_detect_time = self._config['handmade_detection']['oscillation_detect_time']
-        self.oscillation_goal_dist_threshold = self._config['handmade_detection']['oscillation_goal_dist_threshold']
-        self.flipping_angle_threshold = self._config['handmade_detection']['flipping_angle_threshold']
-        self.flipping_count_num = self._config['handmade_detection']['flipping_count_num']
-        self.flipping_num_threshold = self._config['handmade_detection']['flipping_num_threshold']
+    
         
         # DWA params (if there is)
         if 'dwa_config' in self._config:

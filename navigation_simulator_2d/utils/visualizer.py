@@ -1,16 +1,13 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import numpy as np
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
 import matplotlib.colors as colors
 import io
 
-if TYPE_CHECKING:
-    from navigation_simulator_2d.common import RobotObservation, AgentState
-    from navigation_simulator_2d.utils import MapHandler
+from navigation_simulator_2d.common import RobotObservation, AgentState
+from navigation_simulator_2d.utils import MapHandler
 
 
 def cmap_with_transparency(cmap: cm)->cm:
@@ -22,7 +19,7 @@ def cmap_with_transparency(cmap: cm)->cm:
 def render(
     static_map: MapHandler,
     obstacle_map: MapHandler,
-    inflation_layer: np.ndarray,
+    # inflation_layer: np.ndarray,
     robot_observation: RobotObservation,
     robot_traj: np.ndarray,
     goal_state: AgentState,
