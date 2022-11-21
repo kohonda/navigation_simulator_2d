@@ -31,4 +31,11 @@ cd test
 python3 test_simulator.py
 ```
 
-![animation](https://user-images.githubusercontent.com/50091520/202944565-7eaa24d4-c7b6-4ebb-88a5-9032e64f2729.gif)
+<div align="center">
+<img src="https://user-images.githubusercontent.com/50091520/202944565-7eaa24d4-c7b6-4ebb-88a5-9032e64f2729.gif">
+</div>
+
+- Green/Red circle: Robot (When red, the robot is in collision with obstacles)
+- Black: known static object, given as prepared map
+- Blue: unknown static/dynamic objects
+- Red: LiDAR scan
