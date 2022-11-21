@@ -27,7 +27,8 @@ def render(
     global_path: np.ndarray = None,
     local_path_list: list = None,
     local_path_best_index: int = None,
-    sub_goal_index: int = None
+    sub_goal_index: int = None,
+    visualize_local_path: bool = False,
     )->np.ndarray:
     
     """Render the robot navigation
@@ -84,9 +85,10 @@ def render(
     # image of local planner predicted path
     if local_path_list is not None and local_path_best_index is not None:
         ### visualize all local paths
-        # for local_path in local_path_list:
-        #     local_paths_ij = static_map.pose_array2index_array_float(local_path)
-        #     axes.plot(local_paths_ij[:,0], local_paths_ij[:,1], color='b', linewidth=1.0)
+        if visualize_local_path:
+            for local_path in local_path_list:
+                local_paths_ij = static_map.pose_array2index_array_float(local_path)
+                axes.plot(local_paths_ij[:,0], local_paths_ij[:,1], color='b', linewidth=1.0)
         ### visualize best local path
         local_path_ij = static_map.pose_array2index_array_float(local_path_list[local_path_best_index])
         axes.plot(local_path_ij[:,0], local_path_ij[:,1], color='orange', linewidth=2.0)
