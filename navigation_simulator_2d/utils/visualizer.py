@@ -19,11 +19,11 @@ def cmap_with_transparency(cmap: cm)->cm:
 def render(
     static_map: MapHandler,
     obstacle_map: MapHandler,
-    # inflation_layer: np.ndarray,
     robot_observation: RobotObservation,
     robot_traj: np.ndarray,
     goal_state: AgentState,
     robot_radius: float,
+    inflation_layer: np.ndarray = None,
     global_path: np.ndarray = None,
     local_path_list: list = None,
     local_path_best_index: int = None,
@@ -42,8 +42,9 @@ def render(
     axes.imshow(obstacle_map.get_map_as_np('occupancy').T, cmap=obstacle_cmap, vmin=0, vmax=1, alpha=1.0)
     
     # inflation
-    # inflation_cmap = cmap_with_transparency(cm.get_cmap('gray'))
-    # axes.imshow(inflation_layer.T, cmap=inflation_cmap, vmin=0, vmax=2, alpha=0.5)
+    if inflation_layer is not None:
+        inflation_cmap = cmap_with_transparency(cm.get_cmap('gray'))
+        axes.imshow(inflation_layer.T, cmap=inflation_cmap, vmin=0, vmax=2, alpha=0.5)
     
     # image of scan points from lidar
     scan_cmap = cmap_with_transparency(cm.bwr)
