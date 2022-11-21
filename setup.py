@@ -8,7 +8,7 @@ setup(name='navigation_simulator_2d',
       python_requires='>=3.8.10',
       
       install_requires=[
-            'pymap2d',
+            'pymap2d>=0.1.15',
             'scikit-image',
             'matplotlib',
       ],

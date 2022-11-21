@@ -1,5 +1,5 @@
 """
-Parameter handler for navigation stack.
+Parameter load and handle class
 """
 from __future__ import annotations
 

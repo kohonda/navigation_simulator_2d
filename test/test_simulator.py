@@ -1,10 +1,8 @@
 import matplotlib.animation as animation
 from matplotlib import pyplot as plt
 import numpy as np
-import os
-import yaml
 from navigation_simulator_2d.utils import visualizer, ParameterHandler
-from navigation_simulator_2d.common import RobotCommand, RobotObservation, AgentState
+from navigation_simulator_2d.common import RobotCommand
 from navigation_simulator_2d.simulator import Simulator
 
 # Parameters
@@ -12,25 +10,33 @@ config_path = 'config/default.yaml'
 params = ParameterHandler()
 params.init(config_path)
 
-# Simulator
+# initialize simulator
 simulator = Simulator()
 simulator.reset(params)
 
-# constant velocity motion
+# demo: constant velocity motion
 linear_vel = np.array([2.0, 0.0])
-robot_command = RobotCommand(linear_vel=linear_vel, angular_vel=0.5)
+angular_vel = 0.5
+robot_command = RobotCommand(linear_vel=linear_vel, angular_vel=angular_vel)
 
 save_animation = False
 save_folder = '/home/honda/Videos/'
 
 frames = []
 
+# main loop
 for _ in range(130):
+    # Get robot observation from simulator
     robot_obs = simulator.get_observation()
+    
+    # Get static map from simulator
     static_map = simulator.get_static_map()
     
+    # Update robot state with robot command
+    # obstacle_map is 2d occupancy map (0: free, 1: occupied)
     obstacle_map, robot_traj = simulator.step(robot_command)
 
+    # Visualize
     image_arr = visualizer.render(
         static_map=static_map, 
         obstacle_map=obstacle_map, 

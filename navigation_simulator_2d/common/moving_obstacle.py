@@ -12,8 +12,7 @@ class Shape(Enum):
     CIRCLE = auto()
     # RECTANGLE = auto()
     # POLYGON = auto()
-    # RANDOM = auto() # randomもできそう skimage
-    # TODO: impl
+    # RANDOM = auto()
     
     @staticmethod
     def from_str(shape_str: str) -> 'Shape':

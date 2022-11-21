@@ -34,6 +34,11 @@ class Simulator():
         self._scan_ranges = np.ones(self.NUM_SCAN_RAY) * self.SCAN_RANGE # scan range is constant, like lidar
     
     def reset(self, params: ParameterHandler)->MapHandler:
+        """
+        Reset the simulator with new parameters
+        params: ParameterHandler
+        return: MapHandler (static map)
+        """
         
         # common params 
         self.CONTROL_INTERVAL = params.control_interval_time
@@ -101,7 +106,12 @@ class Simulator():
     def get_obstacles_status(self)->List:
         return self._moving_obstacles.copy()
 
-    def step(self, control_cmd: RobotCommand)->Tuple:        
+    def step(self, control_cmd: RobotCommand)->Tuple:
+        """
+        Update robot state and moving obstacles state
+        params: control_cmd: RobotCommand
+        return: obstacles info as occupancy map, robot_traj: np.ndarray
+        """
         # update state
         self._robot_state = self._update_robot_state(self._robot_state, control_cmd)
         
@@ -126,7 +136,6 @@ class Simulator():
     def get_observation(self)->RobotObservation:
         return self._robot_observation
     
-    # NOTE: current obstacle state is used, not future state
     def get_goal_observation(self, goal_state: AgentState)->RobotObservation:
         robot_state = goal_state
         min_dist_to_obstacle = self._merged_map.get_obs_dist(robot_state.pos)
