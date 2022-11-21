@@ -12,21 +12,21 @@ git clone git@github.com:kohonda/navigation_simulator_2d.git
 
 2. Create venv
 
-```
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
 3. Install
 
-```
+```bash
 cd navigation_simulator_2d
 pip3 install -e .
 ```
 
 ## How to run example
 
-```
+```bash
 cd test
 python3 test_simulator.py
 ```
@@ -39,3 +39,12 @@ python3 test_simulator.py
 - Black: known static object, given as prepared map
 - Blue: unknown static/dynamic objects
 - Red: LiDAR scan
+
+## How to make new map
+
+```bash
+cd script
+python3 map_creator.py [config-yaml]
+```
+
+Example config is [here](script/example.yaml)
