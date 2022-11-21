@@ -6,9 +6,10 @@ from navigation_simulator_2d.common import RobotCommand
 from navigation_simulator_2d.simulator import Simulator
 
 # Parameters
-config_path = 'config/default.yaml'
+project_dir = '../'
+config_path = '../config/default.yaml'
 params = ParameterHandler()
-params.init(config_path)
+params.init(project_root_dir=project_dir, config=config_path)
 
 # initialize simulator
 simulator = Simulator()

@@ -14,15 +14,15 @@ from navigation_simulator_2d.common import AgentState, MovingObstacle, MotionMod
 class ParameterHandler():
     def __init__(self):
         self._config : dict = None
-        current_path : str = os.path.dirname(os.path.abspath(__file__))
-        self._project_path : str = os.path.dirname(os.path.dirname(current_path))
         self._rng = None
         
-    def init(self, config : Union[str, dict], seed: int = 0) -> None:
+    def init(self, project_root_dir: str , config : Union[str, dict], seed: int = 0) -> None:
+        # project root dir
+        self._project_path = project_root_dir
         
+        # config file
         if isinstance(config, str):
-            config_path = os.path.join(self._project_path, config)
-            self._config: dict = yaml.safe_load(open(config_path, 'r'))    
+            self._config: dict = yaml.safe_load(open(config, 'r'))    
         elif isinstance(config, dict):
             self._config = config
         else:
