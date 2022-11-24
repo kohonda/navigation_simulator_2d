@@ -194,6 +194,20 @@ class MapHandler():
         """
         return self._cmap2d.origin_xy()
     
+    def get_area_limits(self) -> np.ndarray:
+        """Get area limits.
+           Returns:
+                area limits (x_min, x_max, y_min, y_max) in global coordinate
+        """
+        origin = self.get_origin()
+        map_size = self.get_map_size()
+        x_min = origin[0]
+        x_max = origin[0] + map_size[0]
+        y_min = origin[1]
+        y_max = origin[1] + map_size[1]
+        
+        return np.array([x_min, x_max, y_min, y_max])
+    
     def get_image_size(self) -> np.ndarray:
         return self._occupancy_map.shape
     
